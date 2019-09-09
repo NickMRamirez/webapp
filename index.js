@@ -10,7 +10,7 @@ app.use(function(req, res, next) {
 })
 const port = 80
 
-const version = "0.1"
+const version = "0.2"
 
 var guid = uuid.v4();
 
