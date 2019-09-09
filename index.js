@@ -10,6 +10,8 @@ app.use(function(req, res, next) {
 })
 const port = 80
 
+const version = "0.1"
+
 var guid = uuid.v4();
 
 function sleep(ms) {
@@ -17,6 +19,8 @@ function sleep(ms) {
 }
 
 app.get('/', (req, res) => res.send(`Served by: ${guid}`))
+
+app.get('/verison', (req, res) => res.send(`Version: ${version}`))
 
 app.get('/delay/:seconds', async function(req, res) {
     var seconds = parseInt(req.params["seconds"], 10);
