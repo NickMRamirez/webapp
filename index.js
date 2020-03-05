@@ -10,7 +10,7 @@ app.use(function(req, res, next) {
 })
 const port = 80
 
-const version = "1.1"
+const version = "1.2"
 
 var guid = uuid.v4();
 
@@ -103,4 +103,10 @@ app.post('/503', function(req, res) {
     res.sendStatus(503);
 });
 
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+const server = app.listen(port, () => console.log(`Server listening on port ${port}`));
+
+process.on('SIGTERM', function() {
+    server.close(function() {
+        process.exit(0);
+    })
+})
